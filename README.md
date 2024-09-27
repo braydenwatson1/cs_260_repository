@@ -28,6 +28,15 @@ This website will track how many pushups you do every day. It is extremely simpl
 - WebSocket - As each user does pushups, their numbers are broadcast to all other users.
 
 ## HTML deliverable
+For this deliverable I built out the structure of my application using HTML.
+
+- [x] **HTML pages** -  HTML page that represent: login, create account, user dashboard (for tracking pushups, and setting goals), history/statistics page, settings/edit profile page.
+- [x] **Links** - all the links connect the HTML pages as appropriate. Login links to create new account, and to the dashboard. The Dashboard then links to all the phter pages and back.
+- [x] **Text** - Every HTML page has text instruction and clear communication of what each aspect of the page is doing.
+- [x] **Images** - Images are inlcuded for the motivational section on the dashboard, and the profile picture.
+- [x] **DB/Login** - The data base will include login, and account information, as well as pushup and statistic info for each user.
+- [x] **WebSocket** - There is a live updating section where other users pushups are posted, as well as a section where motivational quotes and pictures are generated from an external database.
+
 ## CSS deliverable
 ## React deliverable
 ## Service deliverable
