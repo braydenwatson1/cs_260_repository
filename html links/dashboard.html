@@ -4,15 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Your Dashboard</title>
+        <link rel="stylesheet" href="../CSS_files/dashboard_styles.css">
     </head>
     <body>
-       <header>
-            <h1>Your Dashboard</h1>
-            <hr>
-       </header>
-       
-       <main>
-            <div style="border: 1px solid;">
+            <div class="live-updates">
                 <p>
                     Live updates:
                     <ul>
@@ -35,63 +30,52 @@
                             Jimmer Fredette just completed 160 pushups! (09/21/24 06:05)
                         </li>
                     </ul>
-
                 </p>
+            </div>
+            <div class="right-sections">
+                <div class="middle-column"> 
+                    <div class="profile-section">
+                        <div class="profile-pic-section">
+                            
+                            <img width="100px" src="../images/default_profile_pic.jpeg" alt="default profile picture"> <br>
+                        </div>
+                            <div class="profile-info-section">
+                                <strong>Your Profile</strong><br>
+                                <div>
+                                <p class="user-info">User Name</p>
+                                <p class="user-info">Email</p>
+                                <p class="user-info">-n- total pushups completed!</p>
+                                <p class="user-info"><a href="settings.html">edit your profile</a></p>
+                            </div>
+                        </div>    
+                    </div>
+                    <div class="tracker-section">
+                        <div class="tracker-top">
+                            <img width="500px" src="../images/circle_progress_ring.png" alt="circle graph tracker">
+                        </div>
+                        <div class="tracker-bottom">
+                            Pushup-Tracker <br>
+                            <button class="edit-button">+ pushups</button>
+                            <button class="edit-button">edit goal</button>
+                        </div> 
+                    </div>
+                </div>
+                <div class="right-column">
+                    <div class="stats-section">
+                        <strong>Statistics</strong> <br> <br>
+                        <fieldset class="stats-box">
+                            you have averaged -n- pushups over the past -n- days!
+                            <button>edit days</button> <br>
+                            you are on a -n- days streak! <br>
+                            <a href="history.html">view full history</a>
+                        </fieldset>
+                    </div>
+                    <div class="motivational-section">
+                        "Motivational Quote and image generated here. filler text. 123. filler text. 123. filler filler." <br> <br>
+                        <img src="../images/dumbell_picture.png" alt="motivational picture">
+                    </div>
+                </div>
+            </div>
 
-            </div>
-            <br>
-            <div style="border: 1px solid;">
-                <p>
-                    <strong>Your Profile</strong><br>
-                    <img width="100px" src="../images/default_profile_pic.jpeg" alt="default profile picture"> <br>
-                    User_name <br>
-                    email <br>
-                    -n- total pushups completed! <br>
-                    <a href="settings.html">edit your profile</a>
-                </p>
-
-            </div>
-            <br>
-            <div style="border: 1px solid;">
-                <strong>Pushup-Tracker</strong> <br>
-                <img width="300px" src="../images/circle_progress_ring.png" alt="circle graph tracker">
-                <fieldset>
-                    <button>+ pushups</button>
-                    <button>edit goal</button>
-                </fieldset>
-            </div>
-            <br>
-            <div style="border: 1px solid;">
-                <strong>Statistics</strong> <br>
-                <fieldset>
-                    you have averaged -n- pushups over the past -n- days!
-                    <button>edit days</button> <br>
-                    you are on a -n- days streak! <br>
-                    <a href="history.html">view full history</a>
-                </fieldset>
-            </div>
-            <br>
-            <div style="border: 1px solid;">
-                "Motivational Quote generated here" <br>
-                <img src="../images/dumbell_picture.png" alt="motivational picture">
-            </div>
-       </main>
-
-       <footer>
-            <hr>
-            <a target="_blank" href="https://github.com/braydenwatson1/cs_260_repository.git">Brayden Watson GitHub Repository</a>
-            <br>
-            <hr>
-            <hr>
-            <p>
-                THIS PORTION WILL NOT BE VISIBLE ON THE WELCOME PAGE NORMALLY, IT IS HERE TEMPORARILY UNTIL THE LOGIN BUTTON WORKS.
-            </p>
-                <a href="create_new_account.html">Create new account page</a>
-                <a href="../index.html">Home/Welcome Page</a>
-                <a href="history.html">History Page</a>
-                <a href="settings.html">Settings Page</a>
-                <a href="dashboard.html">User Dashboard</a>
-            
-        </footer> 
     </body>
 </html>
