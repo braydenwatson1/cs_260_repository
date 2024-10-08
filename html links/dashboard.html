@@ -51,13 +51,17 @@
                     </div>
                     <div class="tracker-section">
                         <div class="tracker-top">
-                            <img width="500px" src="../images/circle_progress_ring.png" alt="circle graph tracker">
+                            <div class="circle" id="circle">
+                                <div class="progress" id="progress"></div>
+                                <div class="goal" id="goal">Goal: <span id="goalValue">10</span> Push-ups</div>
+                            </div>
                         </div>
                         <div class="tracker-bottom">
                             Pushup-Tracker <br>
-                            <button class="edit-button">+ pushups</button>
-                            <button class="edit-button">edit goal</button>
-                        </div> 
+                            <button class="edit-button" id="addPushup">+ pushups</button>
+                            <button class="edit-button" id="editGoal">Edit Goal</button>
+                        </div>
+                    </div>
                     </div>
                 </div>
                 <div class="right-column">
