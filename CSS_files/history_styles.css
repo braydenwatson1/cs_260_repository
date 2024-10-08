@@ -52,7 +52,7 @@ a:hover {
     color: black; /* Text color */
     border: none; /* Remove default border */
     border-radius: 5px; /* Rounded corners */
-    padding: 10px 20px; /* Vertical and horizontal padding */
+    padding:3px 3px; /* Vertical and horizontal padding */
     font-size: 16px; /* Font size */
     cursor: pointer; /* Change cursor on hover */
     transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
@@ -60,26 +60,6 @@ a:hover {
 
 /* Hover effect */
 .styled-button:hover {
-    background-color: #000000; 
-    transform: translateY(-2px); 
+    background-color: #000000;  
     color: #a3d0f4;
-}
-
-.fun-button {
-    background-color: #000000; /* Fun pink color */
-    color: white; /* Text color */
-    border: none; /* Remove default border */
-    border-radius: 20px; /* More rounded corners */
-    padding: 8px 16px; /* Smaller padding */
-    font-size: 14px; /* Smaller font size */
-    cursor: pointer; /* Change cursor on hover */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-}
-
-/* Hover effect */
-.fun-button:hover {
-    background-color: #fafbaf; /* Slightly darker shade on hover */
-    transform: scale(1.1); /* Slightly enlarge on hover */
-    color: black;
 }
