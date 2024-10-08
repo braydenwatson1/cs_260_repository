@@ -13,26 +13,28 @@ body {
 }
 
 header {
-    background-color: aqua;
+    background: linear-gradient(#B9D6F2,#061A40);
     text-align: center;
     padding: 10px;
 }
 
 main {
-    background-color: blueviolet;
+    background-color: #0353A4;
+    border-radius:;
     align-items: center;
     text-align: center;
     justify-content: center;
     color: white;
     font-size: large;
     line-height: 3;
-    border: 3px solid;
+    border: 10px solid #061A40;
     padding: 20px;
     flex: 1;
 }
 
 footer {
-    background-color: cadetblue;
+    background: linear-gradient(#061A40,#B9D6F2);
     text-align: center;
     padding: 10px;
+    height: 10%;
 }
