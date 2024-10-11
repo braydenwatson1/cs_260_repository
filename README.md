@@ -40,12 +40,12 @@ For this deliverable I built out the structure of my application using HTML.
 ## CSS deliverable
 For this deliverable I properly styled the application into its final appearance.
 
- Header, footer, and main content body
- Navigation elements - I made a temporary nav at the bottom of the login page for graders. Normally you have to login, and from the dahsboard you acn navigate to all other pages
- Responsive to window resizing - using flexboxes made it adjustable for different screen sizes
- Application elements - I made a good layout using flexboxes to make a complex dashboard, and I used different colors, contrasts, and styles on the buttons, text, even the login page has a background video looping
- Application text content - Consistent font theme, and color theme
- Application images - Images are included and properly sized and styled. 
+- [x]  Header, footer, and main content body
+- [x]  Navigation elements - I made a temporary nav at the bottom of the login page for graders. Normally you have to login, and from the dahsboard you acn navigate to all other pages
+- [x]  Responsive to window resizing - using flexboxes made it adjustable for different screen sizes
+- [x]  Application elements - I made a good layout using flexboxes to make a complex dashboard, and I used different colors, contrasts, and styles on the buttons, text, even the login page has a background video looping
+- [x] Application text content - Consistent font theme, and color theme
+- [x]  Application images - Images are included and properly sized and styled. 
 ## React deliverable
 ## Service deliverable
 ## DB/Login deliverable
