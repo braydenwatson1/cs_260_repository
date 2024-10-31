@@ -1,0 +1,76 @@
+header {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: rgb(176, 206, 255);
+}
+
+footer {
+    text-align: center;
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    z-index: -1;
+}
+
+.login-boxes {
+    background-color: black;
+    height: 1.5em;
+    margin: 5px;
+    color: rgb(140, 115, 255);
+    font-size: 16px;
+}
+
+.login-button {
+    background-color: rgb(140, 115, 255);
+    color: black;
+    border-radius: 18px;
+    border: 2px black solid;
+    padding: 6px 25px;
+    font-size: 16px;
+    font-family: monospace;
+    box-shadow: none;
+    
+}
+
+.login-button:hover {
+    transform: scale(1.05);
+    transition-duration: .3s;
+    cursor: pointer;
+    background-color: rgb(110, 78, 252);
+}
+
+.content {
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding: 40px;
+    margin: 50px;
+    align-items: center;
+    background-color: rgba(33, 26, 94, 0.909);
+    font-family: monospace;
+}
+
+.video-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.568);
+    z-index: 1; 
+}
