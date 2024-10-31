@@ -1,0 +1,199 @@
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
+
+
+body {
+    background-color: blanchedalmond;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.big-div {
+    background-color: blanchedalmond;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    padding: 0;
+}
+
+.live-updates {
+    background: linear-gradient(#006DAA,black);
+    flex: 1;
+    margin: 0;
+    padding: 5px;
+    border: solid 3px lightslategrey;
+}
+
+.right-sections {
+    background-color: lightcoral;
+    flex: 4;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+.middle-column {
+    background-color:olive;
+    margin: 0;
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-section {
+    margin: 0;
+    flex: 1;
+    background-color:#0353A4;
+    padding: 3px;
+    padding-left: 6px;
+    border-bottom: 3px black solid;
+    border-top: 3px black solid;
+    border-left: 3px black solid;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.profile-pic-section {
+    flex: 1
+
+}
+.profile-info-section {
+    flex: 3;
+
+}
+.user-info {
+    margin: 0;
+    padding: 0;
+}
+
+.tracker-section {
+    margin: 0;
+    background: linear-gradient(#B9D6F2,#061A40);
+    flex: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tracker-top {
+    flex: 4;
+    align-items: end;
+    display: flex;
+    margin: 0;
+}
+.tracker-bottom {
+    flex: 1;
+    width: 100%;
+    font-size: xx-large;
+    text-align: center;
+}
+
+.edit-button {
+    width: 40%;
+    height: 35%;
+    border: 1px orange solid;
+    border-radius: 18px;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    font-family:'Courier New', Courier, monospace;
+}
+
+.edit-button:hover {
+    transform: scale(1.02);
+    transition-duration: .1s;
+}
+
+.tracker-section {
+    text-align: center;
+}
+
+.circle {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: lightgrey;
+    margin: 0 auto; /* Center the circle */
+}
+
+.progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    clip-path: inset(0);
+    background: conic-gradient(#4caf50 0%, #4caf50 var(--percent), lightgrey var(--percent), lightgrey 100%);
+    transition: background 0.3s;
+}
+
+.goal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+    z-index: 1;
+}
+
+.edit-button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: 1px rgb(0, 110, 255) solid;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    transform: scale(1.025);
+    transition-duration: .13s;
+}
+
+.right-column {
+    background-color: indigo;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: black solid 3px;
+}
+
+.stats-section {
+    background-color: #003559;
+    flex: 1.5;
+    text-align: center;
+    padding-top: 5px;
+}
+.stats-box  {
+    text-align: left;
+    
+}
+
+.motivational-section {
+    background-color: #061A40;
+    flex: 3;
+    text-align: center;
+    padding: 5px;
+    padding-top: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a {
+    color: lightgray;
+    font-weight: bold;
+}
+a:hover {
+    color: white;
+}
