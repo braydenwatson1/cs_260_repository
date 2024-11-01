@@ -5,6 +5,7 @@ import Footer from './components/footer';
 import Dashboard from './components/Dashboard';
 import History from './components/History';
 import Settings from './components/Settings';
+import CreateAccount from './components/CreateAccount';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 
@@ -12,7 +13,7 @@ const App = () => {
   return (
     <div className="app">
       
-      <Settings />
+      <CreateAccount />
       
       {/* <Header /> 
         <Routes>
