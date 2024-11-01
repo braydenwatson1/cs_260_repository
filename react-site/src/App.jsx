@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Footer from './components/footer';
 import Dashboard from './components/Dashboard';
 import History from './components/History';
+import Settings from './components/Settings';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 
@@ -11,7 +12,7 @@ const App = () => {
   return (
     <div className="app">
       
-      <History />
+      <Settings />
       
       {/* <Header /> 
         <Routes>
