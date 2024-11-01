@@ -1,6 +1,7 @@
 import React from 'react';
 import './History.css';
 import barGraphPlaceholder from './../assets/bar_graph_placeholder.png'; // Correct image import
+import { Link } from 'react-router-dom';
 
 const History = () => {
     return (
@@ -21,7 +22,7 @@ const History = () => {
                 </fieldset>
                 <img width="400px" src={barGraphPlaceholder} alt="bar graph" />
                 <br />
-                <a href="/dashboard">back to dashboard</a> {/* Use relative path */}
+                <Link to="/dashboard">Dashboard</Link>{/* Use relative path */}
                 <br />               
                 <a target="_blank" rel="noopener noreferrer" href="https://github.com/braydenwatson1/cs_260_repository.git">Brayden Watson GitHub Repository</a>
             </div>

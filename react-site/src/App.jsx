@@ -1,7 +1,5 @@
 import React from 'react';
-import Header from './components/Header';
-import Login from './components/Login';
-import Footer from './components/footer';
+import Login from './Login';
 import Dashboard from './components/Dashboard';
 import History from './components/History';
 import Settings from './components/Settings';
@@ -11,11 +9,8 @@ import { Routes, Route } from 'react-router-dom';
 
 const App = () => {
   return (
-    <div className="app">
-      
-      <CreateAccount />
-      
-      {/* <Header /> 
+    <div className="app"> 
+ 
         <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
@@ -23,7 +18,7 @@ const App = () => {
             <Route path="/create-account" element={<CreateAccount />} />
             <Route path="/settings" element={<Settings />} />
         </Routes>
-      <Footer /> */}
+
     </div>
   );
 };

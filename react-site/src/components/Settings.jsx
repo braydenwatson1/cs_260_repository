@@ -1,5 +1,6 @@
 import React from 'react'
 import './Settings.css'
+import { Link } from 'react-router-dom';
 
 const Settings = () => {
     return (
@@ -16,8 +17,7 @@ const Settings = () => {
                         <input class="fun-button" type="file" />
                         <br />
                         <br />
-                        <a href="dashboard.html">return to dashboard</a>
-
+                        <Link to="/dashboard">Dashboard</Link>
             </div>
             <footer>
                 <br />

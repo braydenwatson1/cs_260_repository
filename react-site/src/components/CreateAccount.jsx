@@ -1,5 +1,6 @@
 import React from 'react';
 import './CreateAccount.css';
+import { Link } from 'react-router-dom';
 
 const CreateAccount = () => {
     return (
@@ -34,13 +35,13 @@ const CreateAccount = () => {
                         />
                         <br />
                     
-                        <button className="login-button" type="submit">Create Account</button>
+                        <button className="login-button" type="button">Create Account</button>
                         
                     </form>
                 </div>
 
                 <video autoPlay muted loop className="video-background">
-                    <source src="../images/Exercise _ Stock_Video _ Free Footage.mp4" type="video/mp4" />
+                    <source src="/My-Video.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>

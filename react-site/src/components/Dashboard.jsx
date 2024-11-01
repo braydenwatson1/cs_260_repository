@@ -2,6 +2,7 @@ import React from 'react';
 import './Dashboard.css';
 import defaultProfilePic from './../assets/default_profile_pic.jpeg'; // Correct path for image
 import motivationalImage from './../assets/dumbell_picture.png'; // Correct path for image
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
     return (
@@ -28,7 +29,7 @@ const Dashboard = () => {
                             <p className="user-info">User Name</p>
                             <p className="user-info">Email</p>
                             <p className="user-info">-n- total pushups completed!</p>
-                            <p className="user-info"><a href="settings.html">edit your profile</a></p>
+                            <p className="user-info"><Link to="/settings">edit your profile</Link></p>
                         </div>    
                     </div>
                     <div className="tracker-section">
@@ -52,7 +53,7 @@ const Dashboard = () => {
                             you have averaged -n- pushups over the past -n- days!
                             <button>edit days</button> <br />
                             you are on a -n- days streak! <br />
-                            <a href="history.html">view full history</a>
+                            <Link to="/history">view full history</Link>
                         </fieldset>
                     </div>
                     <div className="motivational-section">
