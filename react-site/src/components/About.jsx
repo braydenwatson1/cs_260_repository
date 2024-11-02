@@ -5,23 +5,19 @@ export function About() {
   const [quote, setQuote] = React.useState('Loading...');
 
   React.useEffect(() => {
-    // Here you will later fetch the image and quote
-    setImageUrl(`placeholder.jpg`);
-    setQuote('Show me the code');
+    // Fetch the image and quote
+    setImageUrl('placeholder.jpg'); // Replace with your actual image path
+    setQuote('Motivation here words blah blah yeah!'); // Placeholder quote
   }, []);
 
   return (
-    <main className='container-fluid bg-secondary text-center'>
-      <div>
-        <div id='picture' className='picture-box'>
-          <img src={imageUrl} alt='random image' />
-        </div>
-        <div className='quote-box bg-light text-dark'>
-          <p className='quote'>{quote}</p>
-        </div>
+    <div className='motivational-section'>
+      <div className='picture-box'>
+        <img src={imageUrl} alt='Random motivational' />
       </div>
-    </main>
+      <div className='quote-box bg-light text-dark'>
+        <p className='quote'>{quote}</p>
+      </div>
+    </div>
   );
 }
-
-export default About;

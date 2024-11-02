@@ -1,6 +1,7 @@
 import React from 'react';
-import './Dashboard.css';
+import "./Dashboard.css";
 import { Link } from 'react-router-dom';
+import About from './About'; // Import the About component
 
 const Dashboard = () => {
     return (
@@ -55,8 +56,7 @@ const Dashboard = () => {
                         </fieldset>
                     </div>
                     <div className="motivational-section">
-                        "Motivational Quote and image generated here. filler text. 123. filler text. 123. filler filler." <br /> <br />
-                        <img src='/dumbell_picture.png' alt="motivational picture" />
+                        <About /> {/* Insert the About component here */}
                     </div>
                 </div>
             </div>

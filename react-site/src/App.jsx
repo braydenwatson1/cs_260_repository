@@ -18,6 +18,7 @@ const App = () => {
             <Route path="/history" element={<History />} />
             <Route path="/create-account" element={<CreateAccount />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/about" element={<About />} />
         </Routes>
 
     </div>
