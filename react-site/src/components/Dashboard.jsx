@@ -1,7 +1,5 @@
 import React from 'react';
 import './Dashboard.css';
-import defaultProfilePic from './../assets/default_profile_pic.jpeg'; // Correct path for image
-import motivationalImage from './../assets/dumbell_picture.png'; // Correct path for image
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
@@ -22,7 +20,7 @@ const Dashboard = () => {
                 <div className="middle-column"> 
                     <div className="profile-section">
                         <div className="profile-pic-section">
-                            <img width="100px" src={defaultProfilePic} alt="default profile picture" /> <br />
+                            <img width="100px" src='/default_profile_pic.png' alt="default profile picture" /> <br />
                         </div>
                         <div className="profile-info-section">
                             <strong>Your Profile</strong><br />
@@ -58,7 +56,7 @@ const Dashboard = () => {
                     </div>
                     <div className="motivational-section">
                         "Motivational Quote and image generated here. filler text. 123. filler text. 123. filler filler." <br /> <br />
-                        <img src={motivationalImage} alt="motivational picture" />
+                        <img src='/dumbell_picture.png' alt="motivational picture" />
                     </div>
                 </div>
             </div>

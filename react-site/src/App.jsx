@@ -1,9 +1,10 @@
 import React from 'react';
-import Login from './Login';
+import Login from '../public';
 import Dashboard from './components/Dashboard';
 import History from './components/History';
 import Settings from './components/Settings';
 import CreateAccount from './components/CreateAccount';
+import About from './components/About'
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 

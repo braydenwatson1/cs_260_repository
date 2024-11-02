@@ -1,5 +1,5 @@
 import React from 'react';
-import './components/Login.css';
+import './../src/components/Login.css';
 import { Link } from 'react-router-dom';
 
 
@@ -38,7 +38,7 @@ const Login = () => {
                     <button className="login-button" type="submit">Login</button>
                 </form>
                 <br />
-                <a href="html links/create_new_account.html">Create new account</a>
+                <Link to="/create-account">Create New Account</Link>
             </div>
             <video autoPlay muted loop className="video-background">
                     <source src="/My-Video.mp4" type="video/mp4" />

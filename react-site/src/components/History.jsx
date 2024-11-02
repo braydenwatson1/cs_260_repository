@@ -1,6 +1,5 @@
 import React from 'react';
 import './History.css';
-import barGraphPlaceholder from './../assets/bar_graph_placeholder.png'; // Correct image import
 import { Link } from 'react-router-dom';
 
 const History = () => {
@@ -20,7 +19,7 @@ const History = () => {
                         <option value="all-time">All Time</option>
                     </select>
                 </fieldset>
-                <img width="400px" src={barGraphPlaceholder} alt="bar graph" />
+                <img width="400px" src='/bar_graph_placeholder.png' alt="bar graph" />
                 <br />
                 <Link to="/dashboard">Dashboard</Link>{/* Use relative path */}
                 <br />               
