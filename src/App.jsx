@@ -1,11 +1,11 @@
 import React from 'react';
-import Login from '../public';
+import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import History from './components/History';
 import Settings from './components/Settings';
 import CreateAccount from './components/CreateAccount';
 import About from './components/About'
-import './App.css';
+import './components/App.css';
 import { Routes, Route } from 'react-router-dom';
 
 const App = () => {

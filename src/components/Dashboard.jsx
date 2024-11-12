@@ -73,10 +73,10 @@ const Dashboard = () => {
                     <div className="stats-section">
                         <strong>Statistics</strong> <br /> <br />
                         <fieldset className="stats-box">
-                            you have averaged -n- pushups over the past -n- days!
-                            <button>edit days</button> <br />
-                            you are on a -n- days streak! <br />
-                            <Link to="/history">view full history</Link>
+                            <br />
+                            <Link to="/history">View full history and statitics</Link>
+                            <br />
+                            <br />
                         </fieldset>
                     </div>
                     <div className="motivational-section">
