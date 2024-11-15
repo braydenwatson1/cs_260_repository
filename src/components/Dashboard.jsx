@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Dashboard.css";
 import { Link } from 'react-router-dom';
 import About from './About';
+import axios from 'axios'; // You can use axios or fetch for API requests
 
 const Dashboard = () => {
     // State for pushups and goal
@@ -9,6 +10,32 @@ const Dashboard = () => {
     const [goal, setGoal] = useState(10); // Initial goal value
     const [showAddPushupModal, setShowAddPushupModal] = useState(false);
     const [showChangeGoalModal, setShowChangeGoalModal] = useState(false);
+    const [userData, setUserData] = useState(null); // State for storing fetched user data
+    const [loading, setLoading] = useState(true); // State for loading status
+    const [error, setError] = useState(null); // State for error handling
+
+    // Fetch user data when the component mounts
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const response = await axios.get('/user-data', {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`, // Assuming the token is stored in localStorage
+                    }
+                });
+                setUserData(response.data); // Update state with fetched user data
+                setPushups(response.data.pushups); // Set pushups from fetched data
+                setGoal(response.data.goal); // Set goal from fetched data
+            } catch (error) {
+                setError('Failed to fetch user data');
+                console.error(error);
+            } finally {
+                setLoading(false); // Stop loading after the fetch attempt
+            }
+        };
+
+        fetchUserData();
+    }, []);
 
     // Calculate the percentage progress towards the goal
     const progressPercent = Math.min((pushups / goal) * 100, 100); // Capped at 100%
@@ -31,6 +58,14 @@ const Dashboard = () => {
         closeChangeGoalModal();
     };
 
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>{error}</div>;
+    }
+
     return (
         <div className='big-div'>
             <div className="live-updates">
@@ -42,18 +77,18 @@ const Dashboard = () => {
                 </ul>
             </div>
             <div className="right-sections">
-                <div className="middle-column"> 
+                <div className="middle-column">
                     <div className="profile-section">
                         <div className="profile-pic-section">
                             <img width="100px" src='/default_profile_pic.png' alt="default profile picture" /> <br />
                         </div>
                         <div className="profile-info-section">
                             <strong>Your Profile</strong><br />
-                            <p className="user-info">User Name</p>
-                            <p className="user-info">Email</p>
+                            <p className="user-info">{userData?.name}</p>
+                            <p className="user-info">{userData?.email}</p>
                             <p className="user-info">{pushups} total pushups completed!</p>
                             <p className="user-info"><Link to="/settings">edit your profile</Link></p>
-                        </div>    
+                        </div>
                     </div>
                     <div className="tracker-section">
                         <div className="tracker-top">
@@ -74,7 +109,7 @@ const Dashboard = () => {
                         <strong>Statistics</strong> <br /> <br />
                         <fieldset className="stats-box">
                             <br />
-                            <Link to="/history">View full history and statitics</Link>
+                            <Link to="/history">View full history and statistics</Link>
                             <br />
                             <br />
                         </fieldset>

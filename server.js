@@ -62,7 +62,7 @@ app.post('/login', async (req, res) => {
     const user = await usersCollection.findOne({ email });
 
     if (user && user.password === password) {
-      res.send('Login successful');
+      res.json({ message: 'Login successful' });
     } else {
       res.status(401).send('Invalid email or password');
     }
@@ -72,7 +72,50 @@ app.post('/login', async (req, res) => {
   }
 });
 
+//DASHBOARD
+app.get('/user-data', async (req, res) => {
+  const token = req.headers.authorization?.split(' ')[1];  // Extract the token from the header
+  if (!token) {
+    return res.status(401).send('Unauthorized');
+  }
+
+  try {
+    // Verify the token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = decoded.userId;  // Extract user ID from the token payload
+
+    // Fetch user data from the database
+    const usersCollection = db.collection('users');
+    const user = await usersCollection.findOne({ _id: new ObjectId(userId) });
+
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+
+    // Return user data (e.g., workout stats)
+    res.json({
+      email: user.email,
+      workoutStats: user.workoutStats,  // Example field
+    });
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    res.status(500).send('Server error');
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+
