@@ -1,8 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CreateAccount.css';
 import { Link } from 'react-router-dom';
 
 const CreateAccount = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent default form submission
+
+        const data = { email, password };
+
+        try {
+            const response = await fetch('http://localhost:5000/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            const result = await response.text();
+            console.log(result);
+
+            if (response.ok) {
+                alert('Account created successfully');
+            } else {
+                alert('Failed to create account: ' + result);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Something went wrong');
+        }
+    };
+
     return (
         <div className="big-div">
             <header>
@@ -10,7 +41,7 @@ const CreateAccount = () => {
             </header>
             <div className="main-div">
                 <div className="content">
-                    <form action="/login" method="POST">
+                    <form onSubmit={handleSubmit}>
                         <h3>Please Enter Your Information</h3>
                         
                         <label htmlFor="email_input_box">Email:</label>
@@ -20,6 +51,8 @@ const CreateAccount = () => {
                             id="email_input_box" 
                             name="email" 
                             placeholder="Enter your email" 
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             required 
                         />
                         <br />
@@ -31,11 +64,13 @@ const CreateAccount = () => {
                             id="password_entry_box" 
                             name="password" 
                             placeholder="Enter your password" 
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             required 
                         />
                         <br />
                     
-                        <button className="login-button" type="button">Create Account</button>
+                        <button className="login-button" type="submit">Create Account</button>
                         
                     </form>
                 </div>
