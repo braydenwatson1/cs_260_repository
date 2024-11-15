@@ -1,23 +1,29 @@
 import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import cors from 'cors';
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-// For handling `__dirname` with ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Middleware
+app.use(express.json());
+app.use(cors());
 
-// Serve static files from the Vite 'dist' folder
-app.use(express.static(path.join(__dirname, 'dist')));
+const users = [
+  { email: 'user@example.com', password: 'password123' }
+];
 
-// Catch-all route to serve the index.html file
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+
+  const user = users.find(u => u.email === email);
+
+  if (user && user.password === password) {
+    return res.send('Login successful');
+  } else {
+    return res.status(401).send('Invalid email or password');
+  }
 });
 
-// Start the server
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });

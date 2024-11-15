@@ -4,6 +4,38 @@ import { Link } from 'react-router-dom';
 
 
 const Login = () => {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent default form submission
+
+    const data = { email, password };
+
+    try {
+        const response = await fetch('http://localhost:5000/login', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        const result = await response.text();
+        console.log(result); // Handle success or error from the backend
+
+        if (response.ok) {
+            alert('Login successful');
+        } else {
+            alert('Login failed: ' + result);
+        }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Something went wrong');
+    }
+  };
+
     return (
         <div className='bog-div'>
          <header>
@@ -11,31 +43,37 @@ const Login = () => {
         </header>
         <main>
             <div className="content">
-                <form action="/login" method="POST">
-                    <h3>LOGIN</h3>
+                <form onSubmit={handleSubmit}>
                     <label htmlFor="email_input_box">Email:</label>
-                    <input 
-                        className="login-boxes" 
-                        type="email" 
-                        id="email_input_box" 
-                        name="email" 
-                        placeholder="Enter your email" 
-                        required 
+                    <input
+                        className="login-boxes"
+                        type="email"
+                        id="email_input_box"
+                        name="email"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
                     />
+                    
                     <br />
 
                     <label htmlFor="password_entry_box">Password:</label>
-                    <input 
-                        className="login-boxes" 
-                        type="password" 
-                        id="password_entry_box" 
-                        name="password" 
-                        placeholder="Enter your password" 
-                        required 
+                    <input
+                        className="login-boxes"
+                        type="password"
+                        id="password_entry_box"
+                        name="password"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
                     />
                     <br />
-                    
-                    <button className="login-button" type="submit">Login</button>
+
+                    <button className="login-button" type="submit">
+                        Login
+                    </button>
                 </form>
                 <br />
                 <Link to="/create-account">Create New Account</Link>
