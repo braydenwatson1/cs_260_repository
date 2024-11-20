@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import About from './About';
 import axios from 'axios'; // You can use axios or fetch for API requests
 
+
 const handleLogout = () => {
     localStorage.removeItem('token'); // Remove the token from local storage
     window.location.href = '/login'; // Redirect the user to the login page
@@ -18,6 +19,9 @@ const Dashboard = () => {
     const [userData, setUserData] = useState(null); // State for storing fetched user data
     const [loading, setLoading] = useState(true); // State for loading status
     const [error, setError] = useState(null); // State for error handling
+    const [pushupInput, setPushupInput] = useState('');
+    const [goalInput, setGoalInput] = useState('');
+
 
     // Fetch user data when the component mounts
     useEffect(() => {
@@ -52,25 +56,48 @@ const Dashboard = () => {
     const closeChangeGoalModal = () => setShowChangeGoalModal(false);
 
     // Function to handle adding pushups
-    const handleAddPushups = (amount) => {
+    const handleAddPushups = async (amount) => {
         if (isNaN(amount) || amount <= 0) {
             console.log('Invalid amount of pushups');
-            return; // If the amount is not a valid number, return early
+            return; // If the amount is not valid, return early
         }
-
+    
         setPushups((prevPushups) => prevPushups + amount);
         closeAddPushupModal();
+    
+        // Optional: Update pushups on the server
+        try {
+            await axios.post('/update-pushups', { pushups: pushups + amount }, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            });
+        } catch (error) {
+            console.error('Failed to update pushups', error);
+        }
     };
+    
 
     // Function to handle setting a new goal
-    const handleSetGoal = (newGoal) => {
+    const handleSetGoal = async (newGoal) => {
         if (isNaN(newGoal) || newGoal <= 0) {
             console.log('Invalid goal');
             return; // Return early if the new goal is not valid
         }
-        
+    
         setGoal(newGoal);
         closeChangeGoalModal();
+    
+        // Optional: Update goal on the server
+        try {
+            await axios.post('/update-goal', { goal: newGoal }, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            });
+        } catch (error) {
+            console.error('Failed to update goal', error);
+        }
     };
 
     if (loading) {
@@ -108,10 +135,10 @@ const Dashboard = () => {
                     </div>
                     <div className="tracker-section">
                         <div className="tracker-top">
-                            <div className="circle" style={{ '--percent': `${progressPercent}%` }}>
-                                <div className="progress"></div>
-                                <div className="goal">Goal: {goal} Push-ups</div>
-                            </div>
+                    <div className="circle" style={{ '--percent': `${progressPercent}%` }}>
+                        <div className="progress"></div>
+                        <div className="goal">Goal: {goal} Push-ups</div>
+                    </div>
                         </div>
                         <div className="tracker-bottom">
                             Pushup-Tracker <br />
@@ -137,24 +164,37 @@ const Dashboard = () => {
             </div>
 
             {/* Add Pushup Modal */}
-            {showAddPushupModal && (
-                <div className="modal">
-                    <p>How many pushups did you do?</p>
-                    <input type="number" id="pushupInput" placeholder="Enter pushups" />
-                    <button onClick={() => handleAddPushups(Number(document.getElementById("pushupInput").value))}>Add</button>
-                    <button onClick={closeAddPushupModal}>Cancel</button>
-                </div>
-            )}
+            {/* Add Pushup Modal */}
+{showAddPushupModal && (
+    <div className="modal">
+        <p>How many pushups did you do?</p>
+        <input 
+            type="number" 
+            value={pushupInput} 
+            onChange={(e) => setPushupInput(e.target.value)} 
+            placeholder="Enter pushups" 
+        />
+        <button onClick={() => handleAddPushups(Number(pushupInput))}>Add</button>
+        <button onClick={closeAddPushupModal}>Cancel</button>
+    </div>
+)}
+
 
             {/* Change Goal Modal */}
-            {showChangeGoalModal && (
-                <div className="modal">
-                    <p>Set a new goal:</p>
-                    <input type="number" id="goalInput" placeholder="Enter new goal" />
-                    <button onClick={() => handleSetGoal(Number(document.getElementById("goalInput").value))}>Set Goal</button>
-                    <button onClick={closeChangeGoalModal}>Cancel</button>
-                </div>
-            )}
+        {showChangeGoalModal && (
+        <div className="modal">
+            <p>Set a new goal:</p>
+            <input 
+                type="number" 
+                value={goalInput} 
+                onChange={(e) => setGoalInput(e.target.value)} 
+                placeholder="Enter new goal" 
+            />
+            <button onClick={() => handleSetGoal(Number(goalInput))}>Set Goal</button>
+            <button onClick={closeChangeGoalModal}>Cancel</button>
+        </div>
+        )}
+
         </div>
     );
 };
