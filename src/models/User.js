@@ -1,12 +1,13 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
-import { getUsersCollection } from './Database.js'; 
+import bcrypt from 'bcrypt'; // For password hashing
+import { getUsersCollection } from './Database.js';
 
 const router = express.Router();
 
 // Middleware to verify JWT token
 function verifyToken(req, res, next) {
-  const token = req.headers.authorization?.split(' ')[1]; // Extract token from header
+  const token = req.headers.authorization?.split(' ')[1]; // Extract token from "Bearer <token>"
   if (!token) {
     return res.status(401).send('Unauthorized');
   }
@@ -25,6 +26,10 @@ function verifyToken(req, res, next) {
 router.post('/register', async (req, res) => {
   const { email, password } = req.body;
 
+  if (!email || !password) {
+    return res.status(400).send('Email and password are required');
+  }
+
   try {
     const usersCollection = await getUsersCollection();
     const existingUser = await usersCollection.findOne({ email });
@@ -33,9 +38,10 @@ router.post('/register', async (req, res) => {
       return res.status(400).send('User already exists');
     }
 
+    const hashedPassword = await bcrypt.hash(password, 10); // Hash the password
     const newUser = {
       email,
-      password,
+      password: hashedPassword, // Store hashed password
       pushups: 0, // Default pushups
       goal: 50,   // Default goal
     };
@@ -52,11 +58,15 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
+  if (!email || !password) {
+    return res.status(400).send('Email and password are required');
+  }
+
   try {
     const usersCollection = await getUsersCollection();
     const user = await usersCollection.findOne({ email });
 
-    if (user && user.password === password) {
+    if (user && (await bcrypt.compare(password, user.password))) { // Compare hashed password
       const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
       res.json({
@@ -76,7 +86,5 @@ router.post('/login', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
-
-// More routes...
 
 export default router;

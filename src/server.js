@@ -15,6 +15,32 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/users', userRoutes);  // Use the routes for user operations
 
+
+//testing
+app.get('/api/users', (req, res) => {
+  res.send('Users endpoint is active!');
+});
+
+app.post('/api/test-register', async (req, res) => {
+  const newUser = {
+    email: 'testuser@example.com', 
+    password: 'password123', 
+    pushups: 0,
+    goal: 50
+  };
+
+  const usersCollection = await getUsersCollection(); // From your `Database.js`
+  const existingUser = await usersCollection.findOne({ email: newUser.email });
+
+  if (existingUser) {
+    return res.status(400).send('User already exists');
+  }
+
+  await usersCollection.insertOne(newUser);
+  res.send('Test user registered successfully');
+});
+
+
 // Database setup
 const client = new MongoClient(process.env.MONGODB_URI);
 let db;
