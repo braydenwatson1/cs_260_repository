@@ -22,6 +22,7 @@ function verifyToken(req, res, next) {
   }
 }
 
+
 // Register new user
 router.post('/register', async (req, res) => {
   const { email, password } = req.body;
