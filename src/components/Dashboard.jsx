@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 import About from './About';
 import axios from 'axios'; // You can use axios or fetch for API requests
 
+const handleLogout = () => {
+    localStorage.removeItem('token'); // Remove the token from local storage
+    window.location.href = '/login'; // Redirect the user to the login page
+};
+
 const Dashboard = () => {
     // State for pushups and goal
     const [pushups, setPushups] = useState(0); // Initial pushup count
@@ -24,8 +29,8 @@ const Dashboard = () => {
                     }
                 });
                 setUserData(response.data); // Update state with fetched user data
-                setPushups(response.data.pushups); // Set pushups from fetched data
-                setGoal(response.data.goal); // Set goal from fetched data
+                setPushups(Number(response.data.pushups) || 0); // Ensure pushups is a valid number
+                setGoal(Number(response.data.goal) || 10); // Ensure goal is a valid number
             } catch (error) {
                 setError('Failed to fetch user data');
                 console.error(error);
@@ -48,12 +53,22 @@ const Dashboard = () => {
 
     // Function to handle adding pushups
     const handleAddPushups = (amount) => {
-        setPushups(prevPushups => prevPushups + amount);
+        if (isNaN(amount) || amount <= 0) {
+            console.log('Invalid amount of pushups');
+            return; // If the amount is not a valid number, return early
+        }
+
+        setPushups((prevPushups) => prevPushups + amount);
         closeAddPushupModal();
     };
 
     // Function to handle setting a new goal
     const handleSetGoal = (newGoal) => {
+        if (isNaN(newGoal) || newGoal <= 0) {
+            console.log('Invalid goal');
+            return; // Return early if the new goal is not valid
+        }
+        
         setGoal(newGoal);
         closeChangeGoalModal();
     };
@@ -88,6 +103,7 @@ const Dashboard = () => {
                             <p className="user-info">{userData?.email}</p>
                             <p className="user-info">{pushups} total pushups completed!</p>
                             <p className="user-info"><Link to="/settings">edit your profile</Link></p>
+                            <button className="logout-button" onClick={handleLogout}>Logout</button>
                         </div>
                     </div>
                     <div className="tracker-section">
@@ -144,3 +160,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+

@@ -23,6 +23,7 @@ const App = () => {
             </ProtectedRoute>
           } 
         />
+        <Route path="/login" element={<Login />} />
         <Route path="/history" element={<History />} />
         <Route path="/create-account" element={<CreateAccount />} />
         <Route path="/settings" element={<Settings />} />
